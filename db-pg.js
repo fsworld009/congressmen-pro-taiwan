@@ -130,7 +130,7 @@ function create_table(tableName, columns, onSuccess, onError) {
 } 
 
 function import_csv(csvFilePath, tableName, columnOrder, onSuccess, onError) {
-  var q = '\copy ' + tableName + '(';
+  var q = '\\copy ' + tableName + '(';
   var c = '';
   
   for(var i in columnOrder)
