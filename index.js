@@ -21,7 +21,6 @@ app.listen(app.get('port'), function() {
 
 app.get('/db', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    return;//console.log("connected: " + err);
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if(err) {
