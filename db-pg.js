@@ -18,9 +18,9 @@ exports.setDatabaseUrl = function(url) {
   __url = url;
 }
 exports.doWriteTest = function(onSuccess, onError) {
-  query('SELECT * FROM test_table', onSuccess, onError);
+  query('INSERT INTO test_table VALUES (2, \'Bananas\');', onSuccess, onError);
 }
 
 exports.doReadTest = function(onSuccess, onError) {
-	query('INSERT INTO test_table VALUES (2, \'Bananas\');', onSuccess, onError);
+	query('SELECT * FROM test_table', onSuccess, onError);
 }
