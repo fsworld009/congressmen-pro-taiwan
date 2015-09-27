@@ -56,14 +56,14 @@ exports.resetDatabase = function(tableDefinitions) {
   var f = function(i) {
     drop_table(tableDefinitions[i].name, function() {
       logger.debug(' -> done');
-      if(i < tableDefinitions.length - 1)
-        f(i+1);
+      if(i > 0)
+        f(i-1);
     }, 
     function(error) {
       logger.debug('Error : ' + error);
     }); 
   }
-  f(0);
+  f(tableDefinitions.length-1);
 }
 
 exports.initDatabase = function(tableDefinitions, initialDatasets) {
