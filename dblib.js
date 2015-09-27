@@ -31,7 +31,7 @@ exports.initDatabase = function() {
 }
 
 exports.resetDatabase = function() {
-	db.resetDatabase();	
+	db.resetDatabase(TABLE_DEFINITIONS);	
 }
 
 exports.doWriteTest = function(onSuccess, onError) {
