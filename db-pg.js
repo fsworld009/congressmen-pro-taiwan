@@ -5,17 +5,15 @@ var TABLE_DEFINITIONS = [
     "name"    : "state",
     "columns" : [
       {
-        "name" : "state_code primary key",
-        "type" : "char (2)"
+        "name" : "state_code",
+        "type" : "char (2) primary key"
       },
       {
         "name" : "name",
         "type" : "varchar"
       }
     ]
-  }
-];
-/*,
+  },
   {
     "name"    : "district",
     "columns" : [
@@ -56,7 +54,6 @@ var TABLE_DEFINITIONS = [
     ]
   }
 ]
-*/
 
 var __url   = undefined;//process.env.DATABASE_URL;
 
