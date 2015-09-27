@@ -34,7 +34,7 @@ app.get('/db_read_test', function(request, response) {
 
 app.get('/db_write_test', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO test_table VALUES (2, "Bananas");', function(err, result) {
+    client.query('INSERT INTO test_table VALUES (2, \'Bananas\');', function(err, result) {
       done();
       if(err) {
         console.error(err); response.send("Error " + err); 
