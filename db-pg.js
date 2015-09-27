@@ -114,6 +114,6 @@ function create_table(tableName, columns, onSuccess, onError) {
   colStr = colStr.slice(0, -1);
   q      = q + colStr + ');';
   
-  console.write("Creating table '" + tableName + "' [" + q + "]...");
+  console.log("Creating table '" + tableName + "' [" + q + "]...");
   query(q, onSuccess, onError);
 } 
