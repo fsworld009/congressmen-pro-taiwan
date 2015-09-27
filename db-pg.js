@@ -78,14 +78,17 @@ exports.setDatabaseUrl = function(url) {
 }
 
 exports.initDatabase = function() {
-  for(var i in TABLE_DEFINITIONS) {
+  var f = function(i) {
     create_table(TABLE_DEFINITIONS[i].name, TABLE_DEFINITIONS[i].columns, function() {
-      
+      console.log('...done');
+      if(i < TABLE_DEFINITIONS.length - 1)
+        f(i+1);
     }, 
     function(error) {
       console.log('error : ' + error);
     }); 
   }
+  f(0);
 }
 
 exports.doWriteTest = function(onSuccess, onError) {
