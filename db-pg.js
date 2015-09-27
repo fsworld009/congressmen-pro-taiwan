@@ -78,7 +78,7 @@ exports.setDatabaseUrl = function(url) {
 }
 
 exports.initDatabase = function() {
-  for(var i in TABLE_DEFINITIONS){
+  for(var i in TABLE_DEFINITIONS) {
     create_table(TABLE_DEFINITIONS[i].name, TABLE_DEFINITIONS[i].columns, function() {
       
     }, 
@@ -114,5 +114,6 @@ function create_table(tableName, columns, onSuccess, onError) {
   colStr = colStr.slice(0, -1);
   q      = q + colStr + ');';
   
+  console.write("Creating table '" + tableName + "' [" + q + "]...");
   query(q, onSuccess, onError);
 } 
