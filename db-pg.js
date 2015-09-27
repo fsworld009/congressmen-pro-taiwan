@@ -59,6 +59,10 @@ var __url   = undefined;//process.env.DATABASE_URL;
 
 function query(q, onSuccess, onError) {
   pg.connect(__url, function(err, client, done) {
+    if(err) {
+      onError(err);
+      return;
+    }
     client.query(q, function(err, result) {
       done();
       if(err) {
@@ -75,7 +79,12 @@ exports.setDatabaseUrl = function(url) {
 
 exports.initDatabase = function() {
   for(var i in TABLE_DEFINITIONS){
-    create_table(TABLE_DEFINITIONS[i].name, TABLE_DEFINITIONS[i].columns); 
+    create_table(TABLE_DEFINITIONS[i].name, TABLE_DEFINITIONS[i].columns, function() {
+      
+    }, 
+    function(error) {
+      console.log('error : ' + error);
+    }); 
   }
 }
 
