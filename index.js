@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------- 
 //----------------------------------------------------------------------
 var express = require('express');
-var pg  = require('pg');
+var dblib  = require('./dblib.js');
 
 
 //----------------------------------------------------------------------
@@ -35,27 +35,17 @@ app.get('/api/add_voting_district', function(request, response) {
 // DB I/O tests
 //----------------------------------------------------------------------
 app.get('/db_read_test', function(request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if(err) {
-        console.error(err); response.send("Error " + err); 
-      } else {
-        response.render('pages/db', {results : result.rows} ); 
-      }
-    });
+  dblib.doReadTest(function(result) {
+    response.render('pages/db', {results : result.rows} ); 
+  }, function(error) {
+    console.error(error); response.send("Error " + error); 
   });
 });
 
 app.get('/db_write_test', function(request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO test_table VALUES (2, \'Bananas\');', function(err, result) {
-      done();
-      if(err) {
-        console.error(err); response.send("Error " + err); 
-      } else {
-        response.end('OK'); 
-      }
-    });
+  dblib.doWriteTest(function(result) {
+    response.end('OK');
+  }, function(error) {
+    console.error(error); response.send("Error " + error); 
   });
 });
