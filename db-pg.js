@@ -13,7 +13,9 @@ var TABLE_DEFINITIONS = [
         "type" : "varchar"
       }
     ]
-  },
+  }
+];
+/*,
   {
     "name"    : "district",
     "columns" : [
@@ -54,6 +56,7 @@ var TABLE_DEFINITIONS = [
     ]
   }
 ]
+*/
 
 var __url   = undefined;//process.env.DATABASE_URL;
 
