@@ -104,7 +104,7 @@ function create_table(tableName, columns, onSuccess, onError) {
   for(var i in columns) {
     if(!columns[i].name || !columns[i].type)
       continue;
-    colStr = colStr + columns[i].name + ' ' + columns[i].type;
+    colStr = colStr + columns[i].name + ' ' + columns[i].type + ',';
   }
   
   if(0 == colStr.length) {
